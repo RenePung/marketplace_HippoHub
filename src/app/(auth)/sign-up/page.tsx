@@ -78,7 +78,13 @@ const Page = () => {
                                     className={cn({
                                         "focus-visible:ring-red-500": errors.email,
                                     })}
-                                    placeholder="you@example.com" />
+                                    placeholder="you@example.com"
+                                    />
+                                    {errors?.email && (
+                                        <p className="text-sm text-red-500">
+                                            {errors.email.message}
+                                        </p>
+                                    )}
                                 </div>
 
                                 {/*Password field*/}
@@ -90,7 +96,13 @@ const Page = () => {
                                     className={cn({
                                         "focus-visible:ring-red-500": errors.password,
                                     })}
-                                    placeholder="Password" />
+                                    placeholder="Password"
+                                    />
+                                    {errors?.password && (
+                                        <p className="text-sm text-red-500">
+                                            {errors.password.message}
+                                        </p>
+                                    )}
                                 </div>
 
                                 <Button>Sign up</Button>
