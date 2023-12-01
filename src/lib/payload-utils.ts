@@ -1,22 +1,22 @@
-import { User } from "../payload-types"; //import has to be relative not absolute!
-import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
-import { NextRequest } from "next/server";
-//***********************************IMPORTS*********************************************
+import { User } from '../payload-types'
+import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies'
+import { NextRequest } from 'next/server'
 
 export const getServerSideUser = async (
-    cookies: NextRequest["cookies"] | ReadonlyRequestCookies
+  cookies: NextRequest['cookies'] | ReadonlyRequestCookies
 ) => {
-    const token = cookies.get("payload-token")?.value
+  const token = cookies.get('payload-token')?.value
 
-    const meRes = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/me`, 
+  const meRes = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/api/users/me`,
     {
-        headers: {
-            Authorization: `JWT ${token}`
-        },
+      headers: {
+        Authorization: `JWT ${token}`,
+      },
     }
   )
 
-  const {user} = (await meRes.json()) as {
+  const { user } = (await meRes.json()) as {
     user: User | null
   }
 
