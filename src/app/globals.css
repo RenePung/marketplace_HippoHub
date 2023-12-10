@@ -57,3 +57,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+.swiper-pagination-bullet {
+  width: 7px !important;
+  height: 7px !important;
+  background: rgba(255, 255, 255, 0.2);
+  scale: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  color: #7c3aed;
+  background: #7c3aed !important;
+  scale: 1.3 !important;
+}
