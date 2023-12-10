@@ -4,7 +4,7 @@ import { Product } from "@/payload-types"
 import { useEffect, useState } from "react"
 import { Skeleton } from "./ui/skeleton"
 import Link from "next/link"
-import { cn } from "@/lib/utils"
+import { cn, formatPrice } from "@/lib/utils"
 import { PRODUCT_CATEGORIES } from "@/config"
 
 interface ProductListingProps {
@@ -39,7 +39,12 @@ const ProductListing = ({product, index}: ProductListingProps) => {
                     <h3 className="mt-4 font-medium text-sm text-gray-700">
                         {product.name}
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">{label}</p>
+                    <p className="mt-1 text-sm text-gray-500">
+                        {label}
+                    </p>
+                    <p className="mt-1 font-medium text-sm text-gray-900">
+                        {formatPrice(product.price)}
+                    </p>
                 </div>
              </Link>
         )
