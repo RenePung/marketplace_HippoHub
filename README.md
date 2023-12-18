@@ -1,3 +1,6 @@
+APPLICATION WORKS and is deployed on railway.app
+Waiting for DNS records verification on Resend. That will allow email verification for new users. Currently signing up IS NOT possible!
+
 add .env file in this project to connect to backend. Example : 
 
 
