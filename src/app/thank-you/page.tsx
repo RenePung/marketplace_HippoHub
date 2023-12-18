@@ -3,9 +3,11 @@ import Image from "next/image";
 import { cookies } from "next/headers";
 import { getPayloadClient } from "@/get-payload";
 import { notFound, redirect } from "next/navigation";
-import { Product, ProductFile } from "@/payload-types";
+import { Product, ProductFile, User } from "@/payload-types";
 import { PRODUCT_CATEGORIES } from "@/config";
 import { formatPrice } from "@/lib/utils";
+import Link from "next/link";
+import PaymentStatus from "@/components/PaymentStatus";
 
 
 //------------------------------------------------------------------------------------------------------------------------
@@ -161,6 +163,18 @@ const ThankYouPage = async ({ searchParams }: PageProps) => {
                                 <p className="text-base">Total</p>
                                 <p className="text-base">{formatPrice(orderTotal + 1)}</p>
                             </div>
+                        </div>
+
+                        <PaymentStatus
+                        isPaid={order._isPaid}
+                        orderEmail={(order.user as User).email}
+                        orderId={order.id}
+                        />
+
+                        <div className="mt-16 border-t border-gray-200 py-6 text-right">
+                            <Link href="/products" className="text-sm font-medium text-violet-600 hover:text-violet-500">
+                                Continue shopping &rarr;
+                            </Link>
                         </div>
                         </div>
                     </div>
